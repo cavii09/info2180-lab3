@@ -29,23 +29,4 @@ blocks.forEach(function(elem, index, list) {
 }) 
 }
 
-/*const isClick = (e) => { const id = e.target.id;
-    if (!spaces[id]) { spaces[id] = circlePlayer;
-    e.target.innerText = circlePlayer;
-    spaces.textContent ='X';
-    spaces.classList.add('X');
-    console.log('button clicked');
-
-    if (playerWon()) {
-        text.innerText = `${circlePlayer} won!`;
-        status();
-        return;
-    }
-    if (playerDraw()){
-        return;
-    }
-}
-    circlePlayer = classO ? classX : classO; 
- }
-*/
 
