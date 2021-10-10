@@ -1,22 +1,21 @@
-
-
 window.onload = function(){
 var blocks = document.getElementById("board").childNodes;
 blocks.forEach(childparam => {childparam.className = "square";} )
 
-const spaces =[];
-const classX ='x';
-const classO = "o";
-let circlePlayer = classO;
+const spaces = [];
+const classO = 'O';
+const classX = 'X';
+let playerTurn = classX;
 
-blocks.forEach(elem =>{elem.addEventListener('click', isClick)
+blocks.forEach(elem =>{elem.addEventListener('click', boxClicked)
 })
-function isClick(e){
+function boxClicked(e){
     const space = e.target;
-    space.textContent = 'X'; 
+    space.innerHTML = playerTurn;
     space.classList.add('X');
-    console.log('button clicked');
-}
+    console.log('box clicked');
+  playerTurn = playerTurn === classO ? classX : classO;
+    }
 
 blocks.forEach(function(elem, index, list) {
     elem.addEventListener('mouseover', function(e){
@@ -26,26 +25,7 @@ blocks.forEach(function(elem, index, list) {
     elem.addEventListener('mouseout', function(e){
         e.target.classList.remove('hover');
     })
-}) 
-}
+}); 
 
-/*const isClick = (e) => { const id = e.target.id;
-    if (!spaces[id]) { spaces[id] = circlePlayer;
-    e.target.innerText = circlePlayer;
-    spaces.textContent ='X';
-    spaces.classList.add('X');
-    console.log('button clicked');
-
-    if (playerWon()) {
-        text.innerText = `${circlePlayer} won!`;
-        status();
-        return;
-    }
-    if (playerDraw()){
-        return;
-    }
-}
-    circlePlayer = classO ? classX : classO; 
- }
-*/
+};
 
