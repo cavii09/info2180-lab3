@@ -6,7 +6,7 @@ blocks.forEach(childparam => {childparam.className = "square";} )
 const statusDisplay = document.getElementById("status");
 const btn = document.getElementById("New Game");
 
-const boxes = [];
+
 const classO = 'O';
 const classX = 'X';
 let playerTurn = classX;
@@ -28,75 +28,58 @@ blocks.forEach(function(elem, index, list) {
     });
 
     elem.addEventListener('mouseout', function(e){
-<<<<<<< HEAD
-        e.target.classList.remove('hover'); }); 
-    });
-//Check for winner and update status
- // blocks.forEach(elem =>{elem.addEventListener('click', playerWon)  
-    
-  const playerWon = () => {
-      if (boxes[0]=== playerTurn){
-        if (boxes[1]=== playerTurn && boxes[2] ===playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins top`);
-          return true;
-        }
-        if (boxes[3]=== playerTurn && boxes[6] === playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins left`);
-          return true;
-        }
-        if (boxes[4]=== playerTurn && boxes[8] === playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins diagonally`);
-          return true;
-        }  
-      }
-      if (boxes[8]=== playerTurn){
-        if (boxes[2]=== playerTurn && boxes[5] === playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins right`);
-          return true;
-          }
-        if (boxes[6]=== playerTurn && boxes[7] === playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins bottom`);
-          return true;
-          }
-        }
-      if (boxes[4]===playerTurn){
-        if (boxes[1]=== playerTurn && boxes[7] === playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins vertically in middle`);
-          return true;
-          }
-        if (boxes[3]=== playerTurn && boxes[5] === playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins horizontally in middle`);
-            return true;
-          }
-        if (boxes[2]=== playerTurn && boxes[6] === playerTurn){
-          console.log(`Congratulations! ${playerTurn} wins diagionally`);
-            return true;
-          }  
-        if (playerWon()){
-           statusDisplay.innerHTML = `Congratulations! ${playerTurn} is the Winner!`;
-           NewGame();
-           return; }
-    }
-    };
- 
-   const NewGame =() => {
-      boxes.forEach((space, i) =>{ 
-        boxes[i] = null;
-       });
-       blocks.forEach((block) => { 
-         block.innerHTML = '';
-       });
-       statusDisplay.innerHTML = "Move your mouse over a square and click to play an X or an O.";
-     ;
-   }
-    //btn.addEventListener('click', NewGame);
-    NewGame();
-  };
-=======
-        e.target.classList.remove('hover');
+       e.target.classList.remove('hover');
     })
-}) 
+});
+// checking for winner 
+//var boxes = [ [], [], []];
+
+function checkColumn(board,move){
+  const column = [board[0][0],board[1][0], board[2][0]];
+  const coulumn2 = [board[0][1],board[1][1], board[2][1]];
+  const coulum3 = [board[0][2],board[1][2], board[2][2]];
+  column_1_result = checkRow(column, move);
+  column_2_result = checkRow(column2, move);
+  column_3_result = checkRow(column3, move);
+  return column_1_result || column_2_result || column_3_result;
 }
 
+function checkRow(row, move){
+  for (let i=0; i<row.length; i++){
+    if(row[i]!=move){
+      return false;
+    } 
+   }
+  return true; 
+}
+function checkDiagionally(board, move){
+  const diagional = [board[0][0],board[1][1], board[2][2]];
+  const diagional = [board[0][2],board[1][1], board[2][0]];
+  diagionL_1_result = checkRow(column, move);
+  diagional_2_result = checkRow(column2, move);
+  return diagional_1_result || diagioanl_2_result;
+}
+function playerWon(){
+  let winnerExist= false;
+  if (checkColumn===''|| checkRow === '' || checkDiagionally === ''){
+    continue;
+  }
+  if (checkColumn === checkRow && checkRow === checkDiagionally){
+    winnerExist =true;
+  }
+}
+if (winnerExist){
+  statusDisplay.innerHTML =`Congratulations! ${playerTurn} is the Winner!`;
+  return;
+}
+const NewGame =() => {
+  boxes.forEach((space, i) =>{ 
+    boxes[i] = null;
+   });
+   blocks.forEach((block) => { 
+     block.innerHTML = '';
+   });
+   statusDisplay.innerHTML = "Move your mouse over a square and click to play an X or an O.";
 
->>>>>>> 43d6c4f73e43531cd6ae4aab2091e131ac899182
+}
+}
