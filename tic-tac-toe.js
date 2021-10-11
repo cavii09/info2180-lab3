@@ -28,6 +28,7 @@ blocks.forEach(function(elem, index, list) {
     });
 
     elem.addEventListener('mouseout', function(e){
+<<<<<<< HEAD
         e.target.classList.remove('hover'); }); 
     });
 //Check for winner and update status
@@ -91,3 +92,11 @@ blocks.forEach(function(elem, index, list) {
     //btn.addEventListener('click', NewGame);
     NewGame();
   };
+=======
+        e.target.classList.remove('hover');
+    })
+}) 
+}
+
+
+>>>>>>> 43d6c4f73e43531cd6ae4aab2091e131ac899182
